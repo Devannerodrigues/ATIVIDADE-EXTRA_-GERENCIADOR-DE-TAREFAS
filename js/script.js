@@ -1,11 +1,36 @@
 let tarefas = [], idTarefa = 0;
 
+const cores = {
+    baixa: '#4caf50',
+    media: '#ffc107',
+    alta: '#f44336'
+};
+
 function renderizar() {
     ['aberto', 'em-andamento', 'finalizada'].forEach(s => document.getElementById(s).innerHTML = '');
     
     tarefas.forEach(t => {
         const card = document.createElement('div');
-        card.style.cssText = `border-left: 5px solid ${cores[t.prioridade]}; background: #f7f6f5; padding: 15px; margin-bottom: 10px; border-radius: 5px;`;
+        card.className = `card ${t.prioridade}`;
+        
+        card.innerHTML = `
+            <span class="badge-prioridade">${t.prioridade}</span>
+            <h3>${t.tarefa}</h3>
+            <div class="card-info">
+                <h2>Responsável:</h2>
+                <p>${t.responsavel}</p>
+                <h2>Descrição:</h2>
+                <p>${t.descricao}</p>
+                <h2>Data:</h2>
+                <p>${new Date(t.data).toLocaleDateString('pt-BR')}</p>
+            </div>
+            <div class="card-actions">
+                ${t.status !== 'em-andamento' ? `<button class="card-btn btn-andamento" onclick="mudar(${t.id}, 'em-andamento')">Em Andamento</button>` : ''}
+                ${t.status !== 'finalizada' ? `<button class="card-btn btn-finalizar" onclick="mudar(${t.id}, 'finalizada')">Finalizar</button>` : ''}
+                ${t.status !== 'aberto' ? `<button class="card-btn btn-reabrir" onclick="mudar(${t.id}, 'aberto')">Reabrir</button>` : ''}
+                <button class="card-btn btn-deletar" onclick="deletar(${t.id})">Deletar</button>
+            </div>
+        `;
          
         document.getElementById(t.status).appendChild(card);
     });
@@ -33,4 +58,22 @@ window.addEventListener('DOMContentLoaded', () => {
         idTarefa = Math.max(...tarefas.map(t => t.id), -1) + 1;
         renderizar();
     }
+    
+    document.getElementById('form-tarefa').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const tarefa = {
+            id: idTarefa++,
+            tarefa: document.getElementById('tarefa').value,
+            responsavel: document.getElementById('responsavel').value,
+            descricao: document.getElementById('descricao').value,
+            prioridade: document.getElementById('prioridade').value,
+            data: document.getElementById('data-tarefa').value,
+            status: 'aberto'
+        };
+        
+        tarefas.push(tarefa);
+        renderizar();
+        document.getElementById('form-tarefa').reset();
+    });
 });

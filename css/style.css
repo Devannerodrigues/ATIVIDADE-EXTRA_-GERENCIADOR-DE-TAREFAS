@@ -29,7 +29,6 @@ body {
     min-height: 100vh;
 }
 
-/* ===== FORMULÁRIO ===== */
 #formulario {
     background-color: var(--branco);
     padding: 40px;
@@ -44,7 +43,7 @@ body {
     color: var(--azul-principal);
     margin-bottom: 30px;
     font-size: 28px;
-    text-align: center;
+    text-align:center;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
@@ -160,7 +159,6 @@ body {
     transform: translateY(-1px);
 }
 
-/* ===== CONTADORES ===== */
 #contadores {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -226,7 +224,6 @@ body {
     color: var(--vermelho);
 }
 
-/* ===== TAREFAS ===== */
 #tarefas {
     display: flex;
     gap: 35px;
@@ -271,7 +268,6 @@ body {
     gap: 18px;
 }
 
-/* ===== CARDS ===== */
 .card {
     background-color: var(--cinza);
     padding: 22px;
@@ -693,7 +689,6 @@ body {
     animation: shake 0.5s ease;
 }
 
-/* Scrollbar customizada */
 ::-webkit-scrollbar {
     width: 10px;
 }

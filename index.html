@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="js/script.js"></script>
+
+</head>
+<body>
+    <main id="layout">
+
+    <section id="formulario">
+
+        <h2>Gerenciador Tarefas</h2>
+
+        <form id="form-tarefa">
+
+            <label for="tarefa">Tarefa</label>
+            <input type="text" id="tarefa" class="input01" placeholder="Digite o nome da tarefa" required>
+
+            <label for="responsavel">Responsável</label>
+            <input type="text" id="responsavel" class="input01" placeholder="Nome do responsável" required>
+
+            <label for="descricao">Descrição da Tarefa</label>
+            <textarea id="descricao" class="input01" placeholder="Descreva a tarefa" required></textarea>
+
+            <label for="prioridade">Prioridade</label>
+            <select id="prioridade" class="input01" required>
+                <option value="">Selecione a prioridade</option>
+                <option value="baixa">Baixa</option>
+                <option value="media">Média</option>
+                <option value="alta">Alta</option>
+            </select>
+
+            <label for="data-tarefa">Data da Tarefa</label>
+            <input type="date" id="data-tarefa" class="input01" required>
+
+            <div id="div-btns">
+
+                <button type="submit" id="btn-add">
+                    Adicionar Tarefa
+                </button>
+
+                <button type="reset" id="btn-limpar">
+                    Limpar
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <section id="lado-direito">
+
+    <section id="contadores">
+        <div class="contador">
+            <h3>Baixa Prioridade</h3>
+            <span id="cont-baixa" class="numero">0</span>
+        </div>
+        <div class="contador">
+            <h3>Média Prioridade</h3>
+            <span id="cont-media" class="numero">0</span>
+        </div>''
+        <div class="contador">
+            <h3>Alta Prioridade</h3>
+            <span id="cont-alta" class="numero">0</span>
+        </div>
+    </section>
+
+    <section id="tarefas">
+        
+        <div class="cards-container">
+            <h2>Aberto</h2>
+            <div id="aberto" class="cards"></div>
+        </div>
+
+        <div class="cards-container">
+            <h2>Em Andamento</h2>
+            <div id="em-andamento" class="cards"></div>
+        </div>
+
+        <div class="cards-container">
+            <h2>Finalizada</h2>
+            <div id="finalizada" class="cards"></div>
+        </div>
+
+    </section>
+
+    </section>
+    </main>
+</body>
+</html>
